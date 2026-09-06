@@ -1,0 +1,184 @@
+/* ==========================================================================
+   MATH FORMULA LIBRARY - CORE DESIGN SYSTEM (HIGH PERFORMANCE)
+   ========================================================================== */
+
+:root {
+  /* Light Palette (Warm Architectural Cream) */
+  --bg-primary: #F8F6F0;
+  --bg-surface: #FCFAF5;
+  --bg-card: #FFFFFF;
+  --bg-card-showcase: #F5F2E9;
+  --bg-pill: #ECE8DD;
+  --bg-pill-active: #1F1E1B;
+  --text-pill-active: #F8F6F0;
+
+  --text-primary: #1F1E1B;
+  --text-secondary: #6B675E;
+  --text-tertiary: #999489;
+  --text-watermark: rgba(31, 30, 27, 0.038);
+
+  --border-subtle: #E8E4D8;
+  --border-medium: #D6D0C2;
+  --border-focus: #1F1E1B;
+
+  --accent-pill: #F4E7BF;
+  --accent-pill-text: #2C2618;
+  --accent-pill-hover: #EEDFA8;
+
+  --badge-bg: #EFECE3;
+  --badge-text: #7A6338;
+
+  --shadow-subtle: 0 1px 2px rgba(31, 30, 27, 0.04);
+  --shadow-card: 0 4px 16px -2px rgba(45, 40, 30, 0.05), 0 1px 3px rgba(45, 40, 30, 0.02);
+  --shadow-hover: 0 12px 28px -4px rgba(45, 40, 30, 0.09), 0 2px 6px rgba(45, 40, 30, 0.04);
+  --shadow-modal: 0 24px 56px -8px rgba(31, 30, 27, 0.20), 0 6px 16px rgba(31, 30, 27, 0.06);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+
+  --container-max: 1260px;
+  --header-height: 72px;
+}
+
+[data-theme="dark"] {
+  /* Dark Palette (Deep Graphite & Warm Charcoal) */
+  --bg-primary: #121211;
+  --bg-surface: #191817;
+  --bg-card: #201F1E;
+  --bg-card-showcase: #171615;
+  --bg-pill: #2B2A27;
+  --bg-pill-active: #F2EFE8;
+  --text-pill-active: #121211;
+
+  --text-primary: #F2EFE8;
+  --text-secondary: #AAA69C;
+  --text-tertiary: #737068;
+  --text-watermark: rgba(242, 239, 232, 0.03);
+
+  --border-subtle: #2C2A26;
+  --border-medium: #3E3B35;
+  --border-focus: #F2EFE8;
+
+  --accent-pill: #342D1C;
+  --accent-pill-text: #F3DC9B;
+  --accent-pill-hover: #423A25;
+
+  --badge-bg: #2B2822;
+  --badge-text: #D6B468;
+
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 4px 16px -2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-modal: 0 24px 60px -8px rgba(0, 0, 0, 0.75), 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   PERFORMANCE-FOCUSED THEME TRANSITIONS (60FPS ON ALL DEVICES)
+   Scoped ONLY to macro layout elements. Never targets KaTeX/SVG children.
+   ========================================================================== */
+body,
+.site-header,
+.formula-card,
+.card-stage,
+.card-body,
+.card-math-box,
+.card-drawer-content,
+.search-container,
+.category-pill,
+.modal-window,
+.site-footer {
+  transition: 
+    background-color 0.22s ease-out,
+    border-color 0.22s ease-out,
+    color 0.22s ease-out;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  touch-action: manipulation;
+}
+
+img, svg {
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}

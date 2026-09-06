@@ -1,0 +1,320 @@
+/* ==========================================================================
+   FORMULA CARDS - TOP-RIGHT COPY & EXPANDABLE DESCRIPTION
+   ========================================================================== */
+
+.formulas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+  width: 100%;
+  align-items: start;
+}
+
+.formula-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  transition: 
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.formula-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-medium);
+}
+
+/* Card Header: Category Left, Copy Button Right */
+.card-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px 20px;
+  background-color: var(--bg-card-showcase);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.card-meta-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-tertiary);
+}
+
+/* Compact Top-Right Copy Button */
+.btn-card-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.btn-card-copy:hover {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.btn-card-copy.copied {
+  background-color: #2D6A4F !important;
+  border-color: #2D6A4F !important;
+  color: #FFFFFF !important;
+}
+
+/* Upper Showcase Area with Math */
+.card-stage {
+  background-color: var(--bg-card-showcase);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 24px 20px 28px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 155px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.card-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  font-weight: 800;
+  font-family: var(--font-sans);
+  color: var(--text-watermark);
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-math-box {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  max-width: 92%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.card-math-box::-webkit-scrollbar {
+  height: 3px;
+}
+.card-math-box::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 3px;
+}
+
+.formula-math {
+  font-family: 'KaTeX_Math', 'Times New Roman', serif;
+  font-size: clamp(1.15rem, 2vw, 1.32rem);
+  color: var(--text-primary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Card Body */
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg-card);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+/* Card Footer with Details link left and Description Pill right */
+.card-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.card-details-trigger {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: color 0.15s ease;
+  user-select: none;
+}
+
+.card-details-trigger:hover {
+  color: var(--text-primary);
+}
+
+/* "Description" Pill Button */
+.btn-pill-desc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent-pill-text);
+  background-color: var(--accent-pill);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: 
+    background-color 0.18s ease,
+    transform 0.15s ease;
+}
+
+.btn-pill-desc:hover {
+  background-color: var(--accent-pill-hover);
+  transform: translateY(-1px);
+}
+
+.btn-pill-desc .desc-arrow {
+  font-size: 0.75rem;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.formula-card.is-expanded .btn-pill-desc .desc-arrow {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   SMOOTH EXPANDABLE DESCRIPTION DRAWER (0fr -> 1fr CSS Grid Animation)
+   ========================================================================== */
+.card-drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: var(--bg-card);
+}
+
+.formula-card.is-expanded .card-drawer {
+  grid-template-rows: 1fr;
+}
+
+.card-drawer-inner {
+  overflow: hidden;
+}
+
+.card-drawer-content {
+  padding: 0 20px 20px 20px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 4px;
+  padding-top: 16px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: 
+    opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.formula-card.is-expanded .card-drawer-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-drawer-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.card-drawer-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Categories Overview Grid */
+.categories-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-subtle);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-medium);
+}
+
+.category-card h3 {
+  font-size: 1.22rem;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.category-card-count {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--badge-text);
+  background: var(--badge-bg);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  width: fit-content;
+}

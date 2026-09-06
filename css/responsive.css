@@ -1,0 +1,262 @@
+/* ==========================================================================
+   MOBILE & CROSS-DEVICE RESPONSIVENESS (320px - 1920px)
+   ========================================================================== */
+
+.hero {
+  padding: clamp(36px, 7vw, 64px) 0 clamp(28px, 5vw, 40px) 0;
+  text-align: center;
+}
+
+.hero-subtitle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  margin-bottom: 16px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-description {
+  max-width: 620px;
+  margin: 0 auto clamp(24px, 4vw, 36px) auto;
+  font-size: clamp(0.98rem, 1.8vw, 1.15rem);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+  .main-nav { display: none; }
+  .mobile-menu-btn { display: flex; }
+  .formulas-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+@media (max-width: 640px) {
+  :root { --header-height: 64px; }
+  .container { padding-left: 16px; padding-right: 16px; }
+  .search-container { padding: 4px 12px 4px 14px; min-height: 48px; }
+  .search-kbd { display: none; }
+  .search-input { font-size: 0.95rem; }
+
+  /* Single Column Card on Mobile */
+  .formulas-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .card-stage { min-height: 140px; padding: 20px 14px; }
+  .card-math-box { max-width: 96%; padding: 12px 14px; }
+  .formula-math { font-size: 1.12rem; }
+
+  .card-header-bar { padding: 14px 16px 10px 16px; }
+  .card-body { padding: 16px; gap: 12px; }
+  .card-title { font-size: 1.12rem; }
+
+  .btn-pill-desc { padding: 7px 15px; font-size: 0.82rem; }
+
+  .categories-overview-grid { grid-template-columns: 1fr; gap: 14px; }
+  .modal-window { padding: 24px 18px; border-radius: var(--radius-lg); }
+  .modal-title { font-size: 1.35rem; }
+  .modal-actions { flex-direction: column; }
+  .modal-actions button { width: 100%; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* 320px Small Mobile */
+@media (max-width: 360px) {
+  .container { padding-left: 12px; padding-right: 12px; }
+  .card-header-bar { padding: 12px 14px 8px 14px; }
+  .card-body { padding: 14px; }
+  .btn-card-copy { padding: 4px 10px; font-size: 0.74rem; }
+  .btn-pill-desc { padding: 6px 12px; font-size: 0.78rem; }
+}
+
+/* Tablet Breakpoint (≤ 960px) */
+@media (max-width: 960px) {
+  .main-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .formulas-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+/* Mobile Breakpoint (≤ 640px - Covers 320px to 430px) */
+@media (max-width: 640px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .brand span:last-child {
+    font-size: 1.05rem;
+  }
+
+  .brand-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+  }
+
+  .search-container {
+    padding: 4px 12px 4px 14px;
+    min-height: 48px;
+  }
+
+  .search-kbd {
+    display: none;
+  }
+
+  .search-input {
+    font-size: 0.95rem;
+  }
+
+  /* Single Column Card Grid on Phones */
+  .formulas-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .card-stage {
+    min-height: 150px;
+    padding: 24px 16px;
+  }
+
+  .card-math-box {
+    max-width: 96%;
+    padding: 12px 14px;
+  }
+
+  .formula-math {
+    font-size: 1.12rem;
+  }
+
+  .card-body {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+  }
+
+  .card-description {
+    font-size: 0.88rem;
+  }
+
+  .card-footer-row {
+    padding-top: 12px;
+  }
+
+  .btn-pill-action {
+    padding: 8px 18px;
+    font-size: 0.84rem;
+  }
+
+  .categories-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .modal-window {
+    padding: 24px 18px;
+    border-radius: var(--radius-lg);
+  }
+
+  .modal-title {
+    font-size: 1.35rem;
+  }
+
+  .modal-formula-box {
+    padding: 18px 12px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Small Phone Breakpoint (≤ 360px - e.g. iPhone SE 1st gen, small Androids) */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .card-body {
+    padding: 14px;
+  }
+
+  .card-submeta-value {
+    max-width: 110px;
+  }
+
+  .btn-pill-action {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

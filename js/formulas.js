@@ -1,0 +1,88 @@
+/**
+ * MATHEMATICAL FORMULA REPOSITORY
+ */
+const formulasData = [
+  // ALGEBRA
+  { id: 'quad-formula', title: 'Quadratic Formula', category: 'Algebra', latex: 'x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}', plainText: 'x = (-b ± √(b² - 4ac)) / (2a)', description: 'Roots of any quadratic equation ax² + bx + c = 0.', variables: [{ name: 'a, b, c', desc: 'Real coefficients (a ≠ 0)' }, { name: 'b² - 4ac', desc: 'Discriminant' }], keywords: ['quadratic', 'roots', 'algebra'] },
+  { id: 'diff-squares', title: 'Difference of Squares', category: 'Algebra', latex: 'a^2 - b^2 = (a - b)(a + b)', plainText: 'a² - b² = (a - b)(a + b)', description: 'Factorization identity for two squares.', variables: [{ name: 'a, b', desc: 'Any expressions' }], keywords: ['factorization', 'algebra'] },
+  { id: 'sq-sum', title: 'Square of Binomial Sum', category: 'Algebra', latex: '(a + b)^2 = a^2 + 2ab + b^2', plainText: '(a + b)² = a² + 2ab + b²', description: 'Expansion of the square of a sum.', variables: [{ name: 'a, b', desc: 'Binomial terms' }], keywords: ['binomial', 'expansion', 'algebra'] },
+  { id: 'sq-diff', title: 'Square of Binomial Difference', category: 'Algebra', latex: '(a - b)^2 = a^2 - 2ab + b^2', plainText: '(a - b)² = a² - 2ab + b²', description: 'Expansion of the square of a difference.', variables: [{ name: 'a, b', desc: 'Binomial terms' }], keywords: ['binomial', 'difference', 'algebra'] },
+  { id: 'sum-cubes', title: 'Sum of Two Cubes', category: 'Algebra', latex: 'a^3 + b^3 = (a + b)(a^2 - ab + b^2)', plainText: 'a³ + b³ = (a + b)(a² - ab + b²)', description: 'Factorization identity for cubic sums.', variables: [{ name: 'a, b', desc: 'Terms' }], keywords: ['cubes', 'sum', 'algebra'] },
+  { id: 'diff-cubes', title: 'Difference of Two Cubes', category: 'Algebra', latex: 'a^3 - b^3 = (a - b)(a^2 + ab + b^2)', plainText: 'a³ - b³ = (a - b)(a² + ab + b²)', description: 'Factorization identity for cubic difference.', variables: [{ name: 'a, b', desc: 'Terms' }], keywords: ['cubes', 'difference', 'algebra'] },
+  { id: 'binom-thm', title: 'Binomial Theorem', category: 'Algebra', latex: '(x + y)^n = \\sum_{k=0}^{n} \\binom{n}{k} x^{n-k} y^k', plainText: '(x + y)ⁿ = Σ [n! / (k!(n-k)!)] xⁿ⁻ᵏ yᵏ', description: 'Expansion of any positive integer power of a binomial.', variables: [{ name: 'n', desc: 'Non-negative power' }], keywords: ['binomial', 'theorem', 'series', 'algebra'] },
+  { id: 'am-gm-ineq', title: 'AM-GM Inequality', category: 'Algebra', latex: '\\frac{x_1 + x_2 + \\dots + x_n}{n} \\ge \\sqrt[n]{x_1 x_2 \\dots x_n}', plainText: '(x₁ + x₂ + ... + xₙ)/n ≥ ⁿ√(x₁ · x₂ · ... · xₙ)', description: 'Arithmetic mean is greater than or equal to geometric mean.', variables: [{ name: 'x_i', desc: 'Non-negative real numbers' }], keywords: ['am-gm', 'inequality', 'mean', 'algebra'] },
+
+  // TRIGONOMETRY
+  { id: 'pyth-id-1', title: 'Fundamental Pythagorean Identity', category: 'Trigonometry', latex: '\\sin^2\\theta + \\cos^2\\theta = 1', plainText: 'sin²(θ) + cos²(θ) = 1', description: 'Primary trigonometric identity on the unit circle.', variables: [{ name: 'θ', desc: 'Angle in radians or degrees' }], keywords: ['sine', 'cosine', 'pythagorean', 'trigonometry'] },
+  { id: 'pyth-id-2', title: 'Tangent-Secant Identity', category: 'Trigonometry', latex: '1 + \\tan^2\\theta = \\sec^2\\theta', plainText: '1 + tan²(θ) = sec²(θ)', description: 'Pythagorean identity for tangent and secant.', variables: [{ name: 'θ', desc: 'Angle (θ ≠ π/2 + kπ)' }], keywords: ['tangent', 'secant', 'trigonometry'] },
+  { id: 'sin-add', title: 'Sine Addition Formula', category: 'Trigonometry', latex: '\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta', plainText: 'sin(α + β) = sin(α)cos(β) + cos(α)sin(β)', description: 'Computes sine of the sum of two angles.', variables: [{ name: 'α, β', desc: 'Angles' }], keywords: ['sine', 'addition', 'trigonometry'] },
+  { id: 'cos-add', title: 'Cosine Addition Formula', category: 'Trigonometry', latex: '\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta', plainText: 'cos(α + β) = cos(α)cos(β) - sin(α)sin(β)', description: 'Computes cosine of the sum of two angles.', variables: [{ name: 'α, β', desc: 'Angles' }], keywords: ['cosine', 'addition', 'trigonometry'] },
+  { id: 'sin-double', title: 'Sine Double Angle Identity', category: 'Trigonometry', latex: '\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta', plainText: 'sin(2θ) = 2 sin(θ) cos(θ)', description: 'Double angle formula for sine.', variables: [{ name: 'θ', desc: 'Angle' }], keywords: ['double angle', 'sine', 'trigonometry'] },
+  { id: 'cos-double', title: 'Cosine Double Angle Identity', category: 'Trigonometry', latex: '\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta', plainText: 'cos(2θ) = cos²(θ) - sin²(θ)', description: 'Double angle formula for cosine.', variables: [{ name: 'θ', desc: 'Angle' }], keywords: ['double angle', 'cosine', 'trigonometry'] },
+  { id: 'law-sines', title: 'Law of Sines', category: 'Trigonometry', latex: '\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}', plainText: 'a/sin(A) = b/sin(B) = c/sin(C)', description: 'Relates sides of a triangle to opposite angles.', variables: [{ name: 'a, b, c', desc: 'Side lengths' }, { name: 'A, B, C', desc: 'Opposite angles' }], keywords: ['law of sines', 'triangle', 'trigonometry'] },
+  { id: 'law-cosines', title: 'Law of Cosines', category: 'Trigonometry', latex: 'c^2 = a^2 + b^2 - 2ab\\cos C', plainText: 'c² = a² + b² - 2ab · cos(C)', description: 'Generalization of Pythagorean theorem for all triangles.', variables: [{ name: 'c', desc: 'Side opposite angle C' }], keywords: ['law of cosines', 'triangle', 'trigonometry'] },
+
+  // GEOMETRY
+  { id: 'pyth-thm', title: 'Pythagorean Theorem', category: 'Geometry', latex: 'a^2 + b^2 = c^2', plainText: 'a² + b² = c²', description: 'Fundamental relation in right triangles.', variables: [{ name: 'a, b', desc: 'Perpendicular legs' }, { name: 'c', desc: 'Hypotenuse' }], keywords: ['pythagoras', 'triangle', 'geometry'] },
+  { id: 'area-triangle', title: 'Area of a Triangle', category: 'Geometry', latex: 'A = \\frac{1}{2}bh', plainText: 'A = (1/2) · b · h', description: 'Area from base and altitude.', variables: [{ name: 'b', desc: 'Base length' }, { name: 'h', desc: 'Altitude' }], keywords: ['triangle', 'area', 'geometry'] },
+  { id: 'heron-area', title: 'Heron\'s Formula', category: 'Geometry', latex: 'A = \\sqrt{s(s-a)(s-b)(s-c)}', plainText: 'A = √(s(s-a)(s-b)(s-c))', description: 'Calculates triangle area from 3 side lengths.', variables: [{ name: 's', desc: 'Semi-perimeter (a+b+c)/2' }], keywords: ['heron', 'triangle', 'area', 'geometry'] },
+  { id: 'circle-area', title: 'Area of a Circle', category: 'Geometry', latex: 'A = \\pi r^2', plainText: 'A = π · r²', description: 'Total 2D area enclosed by circle of radius r.', variables: [{ name: 'r', desc: 'Radius' }], keywords: ['circle', 'area', 'geometry'] },
+  { id: 'circle-circ', title: 'Circumference of a Circle', category: 'Geometry', latex: 'C = 2\\pi r', plainText: 'C = 2πr', description: 'Total perimeter enclosing a circle.', variables: [{ name: 'r', desc: 'Radius' }], keywords: ['circle', 'circumference', 'geometry'] },
+
+  // CALCULUS
+  { id: 'deriv-def', title: 'Definition of the Derivative', category: 'Calculus', latex: 'f\'(x) = \\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h}', plainText: 'f\'(x) = lim(h→0) [f(x + h) - f(x)] / h', description: 'Instantaneous rate of change definition.', variables: [{ name: 'h', desc: 'Infinitesimal increment' }], keywords: ['derivative', 'limit', 'calculus'] },
+  { id: 'ftc-1', title: 'Fundamental Theorem of Calculus I', category: 'Calculus', latex: '\\frac{d}{dx} \\left[ \\int_a^x f(t)\\,dt \\right] = f(x)', plainText: 'd/dx [∫(a to x) f(t) dt] = f(x)', description: 'Differentiation inverts integration.', variables: [{ name: 'f', desc: 'Continuous function' }], keywords: ['calculus', 'fundamental theorem'] },
+  { id: 'ftc-2', title: 'Fundamental Theorem of Calculus II', category: 'Calculus', latex: '\\int_a^b f(x)\\,dx = F(b) - F(a)', plainText: '∫(a to b) f(x) dx = F(b) - F(a)', description: 'Evaluates definite integral via antiderivative F.', variables: [{ name: 'F', desc: 'Antiderivative of f' }], keywords: ['calculus', 'definite integral'] },
+  { id: 'taylor-series', title: 'Taylor Series Expansion', category: 'Calculus', latex: 'f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!} (x - a)^n', plainText: 'f(x) = Σ [fⁿ(a)/n!] · (x - a)ⁿ', description: 'Represents smooth function as infinite polynomial.', variables: [{ name: 'fⁿ(a)', desc: 'n-th derivative at a' }], keywords: ['taylor', 'series', 'calculus'] },
+
+  // DIFFERENTIATION
+  { id: 'diff-power', title: 'Power Rule (Differentiation)', category: 'Differentiation', latex: '\\frac{d}{dx}(x^n) = n x^{n-1}', plainText: 'd/dx (xⁿ) = n · xⁿ⁻¹', description: 'Derivative of variable raised to power n.', variables: [{ name: 'n', desc: 'Real exponent' }], keywords: ['power rule', 'derivative', 'differentiation'] },
+  { id: 'diff-product', title: 'Product Rule', category: 'Differentiation', latex: '\\frac{d}{dx}[u \\cdot v] = u\'v + uv\'', plainText: 'd/dx [u·v] = u\'v + uv\'', description: 'Derivative of product of functions.', variables: [{ name: 'u, v', desc: 'Functions of x' }], keywords: ['product rule', 'differentiation'] },
+  { id: 'diff-quotient', title: 'Quotient Rule', category: 'Differentiation', latex: '\\frac{d}{dx}\\left[\\frac{u}{v}\\right] = \\frac{u\'v - uv\'}{v^2}', plainText: 'd/dx [u/v] = (u\'v - uv\') / v²', description: 'Derivative of quotient of two functions.', variables: [{ name: 'v', desc: 'Denominator (v ≠ 0)' }], keywords: ['quotient rule', 'differentiation'] },
+  { id: 'diff-chain', title: 'Chain Rule', category: 'Differentiation', latex: '\\frac{d}{dx}[f(g(x))] = f\'(g(x)) \\cdot g\'(x)', plainText: 'd/dx [f(g(x))] = f\'(g(x)) · g\'(x)', description: 'Derivative of composite function.', variables: [{ name: 'g', desc: 'Inner function' }], keywords: ['chain rule', 'differentiation'] },
+
+  // INTEGRATION
+  { id: 'int-power', title: 'Power Rule (Integration)', category: 'Integration', latex: '\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C', plainText: '∫ xⁿ dx = (xⁿ⁺¹)/(n+1) + C (n ≠ -1)', description: 'Standard polynomial antiderivative.', variables: [{ name: 'C', desc: 'Constant of integration' }], keywords: ['power rule', 'integration'] },
+  { id: 'int-recip', title: 'Integral of 1/x', category: 'Integration', latex: '\\int \\frac{1}{x}\\,dx = \\ln|x| + C', plainText: '∫ (1/x) dx = ln|x| + C', description: 'Integration of reciprocal yielding natural log.', variables: [{ name: 'x', desc: 'Variable (x ≠ 0)' }], keywords: ['logarithm', 'integration'] },
+  { id: 'int-parts', title: 'Integration by Parts', category: 'Integration', latex: '\\int u\\,dv = uv - \\int v\\,du', plainText: '∫ u dv = u·v - ∫ v du', description: 'Integration technique for products of functions.', variables: [{ name: 'u, v', desc: 'Functions' }], keywords: ['by parts', 'integration'] },
+
+  // PROBABILITY
+  { id: 'prob-bayes', title: 'Bayes\' Theorem', category: 'Probability', latex: 'P(A \\mid B) = \\frac{P(B \\mid A) P(A)}{P(B)}', plainText: 'P(A|B) = [P(B|A) · P(A)] / P(B)', description: 'Calculates posterior probability using evidence.', variables: [{ name: 'P(A)', desc: 'Prior probability' }], keywords: ['bayes', 'conditional', 'probability'] },
+  { id: 'prob-add', title: 'Addition Rule of Probability', category: 'Probability', latex: 'P(A \\cup B) = P(A) + P(B) - P(A \\cap B)', plainText: 'P(A ∪ B) = P(A) + P(B) - P(A ∩ B)', description: 'Probability of union of two events.', variables: [{ name: 'P(A ∩ B)', desc: 'Intersection' }], keywords: ['addition', 'probability'] },
+
+  // STATISTICS
+  { id: 'stat-mean', title: 'Arithmetic Sample Mean', category: 'Statistics', latex: '\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i', plainText: 'x̄ = (1/n) · Σ xᵢ', description: 'Average value of observations.', variables: [{ name: 'n', desc: 'Number of observations' }], keywords: ['mean', 'average', 'statistics'] },
+  { id: 'stat-variance', title: 'Sample Variance', category: 'Statistics', latex: 's^2 = \\frac{1}{n - 1} \\sum_{i=1}^n (x_i - \\bar{x})^2', plainText: 's² = [1/(n-1)] · Σ (xᵢ - x̄)²', description: 'Sample variance with Bessel\'s correction.', variables: [{ name: 's²', desc: 'Variance' }], keywords: ['variance', 'statistics'] },
+
+  // COORDINATE GEOMETRY
+  { id: 'coord-dist', title: 'Distance Formula (2D)', category: 'Coordinate Geometry', latex: 'd = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}', plainText: 'd = √[(x₂ - x₁)² + (y₂ - y₁)²]', description: 'Euclidean distance between two coordinates.', variables: [{ name: 'd', desc: 'Distance' }], keywords: ['distance', 'coordinates'] },
+  { id: 'coord-mid', title: 'Midpoint Formula', category: 'Coordinate Geometry', latex: 'M = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right)', plainText: 'M = ((x₁+x₂)/2, (y₁+y₂)/2)', description: 'Center bisector of line segment.', variables: [{ name: 'M', desc: 'Midpoint' }], keywords: ['midpoint', 'coordinates'] },
+
+  // SEQUENCES & SERIES
+  { id: 'seq-ap', title: 'Arithmetic Progression (n-th Term)', category: 'Sequences & Series', latex: 'a_n = a_1 + (n - 1)d', plainText: 'aₙ = a₁ + (n - 1)d', description: 'Formula for n-th term in arithmetic progression.', variables: [{ name: 'd', desc: 'Common difference' }], keywords: ['arithmetic progression', 'series'] },
+  { id: 'seq-gp', title: 'Geometric Progression (n-th Term)', category: 'Sequences & Series', latex: 'a_n = a_1 \\cdot r^{n - 1}', plainText: 'aₙ = a₁ · rⁿ⁻¹', description: 'Formula for n-th term in geometric progression.', variables: [{ name: 'r', desc: 'Common ratio' }], keywords: ['geometric progression', 'series'] },
+
+  // LOGARITHMS
+  { id: 'log-prod', title: 'Logarithmic Product Rule', category: 'Logarithms', latex: '\\log_b(xy) = \\log_b x + \\log_b y', plainText: 'log_b(xy) = log_b(x) + log_b(y)', description: 'Splits product in log to sum of logs.', variables: [{ name: 'b', desc: 'Base (b > 0, b ≠ 1)' }], keywords: ['logarithm', 'product'] },
+  { id: 'log-base', title: 'Change of Base Formula', category: 'Logarithms', latex: '\\log_b x = \\frac{\\ln x}{\\ln b}', plainText: 'log_b(x) = ln(x) / ln(b)', description: 'Converts logarithm to natural base.', variables: [{ name: 'x', desc: 'Argument' }], keywords: ['change of base', 'logarithms'] },
+
+  // EXPONENTS
+  { id: 'exp-prod', title: 'Product of Powers Rule', category: 'Exponents', latex: 'a^m \\cdot a^n = a^{m + n}', plainText: 'aᵐ · aⁿ = aᵐ⁺ⁿ', description: 'Multiplying powers of the same base.', variables: [{ name: 'a', desc: 'Base' }], keywords: ['exponents', 'powers'] },
+  { id: 'exp-neg', title: 'Negative Exponent Definition', category: 'Exponents', latex: 'a^{-n} = \\frac{1}{a^n}', plainText: 'a⁻ⁿ = 1 / aⁿ', description: 'Reciprocal of positive power.', variables: [{ name: 'a', desc: 'Base (a ≠ 0)' }], keywords: ['negative power', 'exponents'] },
+
+  // MATRICES
+  { id: 'mat-det', title: 'Determinant of 2x2 Matrix', category: 'Matrices', latex: '\\det \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc', plainText: 'det [[a, b], [c, d]] = ad - bc', description: 'Determinant scalar of 2x2 matrix.', variables: [{ name: 'ad - bc', desc: 'Determinant' }], keywords: ['determinant', 'matrices'] },
+  { id: 'mat-inv', title: 'Inverse of 2x2 Matrix', category: 'Matrices', latex: 'A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}', plainText: 'A⁻¹ = (1/(ad-bc)) · [[d, -b], [-c, a]]', description: 'Multiplicative inverse of matrix A.', variables: [{ name: 'A⁻¹', desc: 'Inverse' }], keywords: ['inverse', 'matrices'] },
+
+  // VECTORS
+  { id: 'vec-dot', title: 'Vector Dot Product', category: 'Vectors', latex: '\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\|\\vec{v}\\| \\cos\\theta', plainText: 'u · v = ||u|| ||v|| cos(θ)', description: 'Scalar product measuring alignment.', variables: [{ name: 'θ', desc: 'Angle between vectors' }], keywords: ['dot product', 'vectors'] },
+  { id: 'vec-norm', title: 'Vector Norm (Magnitude)', category: 'Vectors', latex: '\\|\\vec{v}\\| = \\sqrt{v_x^2 + v_y^2 + v_z^2}', plainText: '||v|| = √(vₓ² + v_y² + v_z²)', description: 'Euclidean length of 3D vector.', variables: [{ name: '||v||', desc: 'Length' }], keywords: ['magnitude', 'vectors'] },
+
+  // MENSURATION
+  { id: 'mens-sphere', title: 'Volume of a Sphere', category: 'Mensuration', latex: 'V = \\frac{4}{3}\\pi r^3', plainText: 'V = (4/3) · π · r³', description: 'Capacity enclosed by 3D sphere.', variables: [{ name: 'r', desc: 'Radius' }], keywords: ['sphere', 'volume', 'mensuration'] },
+  { id: 'mens-cyl', title: 'Volume of a Cylinder', category: 'Mensuration', latex: 'V = \\pi r^2 h', plainText: 'V = π · r² · h', description: 'Volume enclosed by circular cylinder.', variables: [{ name: 'h', desc: 'Height' }], keywords: ['cylinder', 'volume', 'mensuration'] },
+
+  // CONSTANTS
+  { id: 'const-pi', title: 'Archimedes\' Constant (Pi, π)', category: 'Mathematical Constants', latex: '\\pi = \\frac{C}{d} \\approx 3.1415926535\\dots', plainText: 'π ≈ 3.1415926535...', description: 'Ratio of circumference to diameter.', variables: [{ name: 'π', desc: 'Pi' }], keywords: ['pi', 'constants'] },
+  { id: 'const-e', title: 'Euler\'s Number (e)', category: 'Mathematical Constants', latex: 'e = \\lim_{n \\to \\infty}\\left(1 + \\frac{1}{n}\\right)^n \\approx 2.718281828\\dots', plainText: 'e ≈ 2.718281828...', description: 'Base of natural logarithm.', variables: [{ name: 'e', desc: 'Euler\'s constant' }], keywords: ['euler', 'e', 'constants'] }
+];

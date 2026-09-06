@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebra Formulas — Math Formula Library</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand"><span class="brand-icon">∑</span><span>Formula Library</span></a>
+      <nav class="main-nav">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="algebra.html" class="nav-link active">Algebra</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" title="Toggle Theme"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+      </div>
+    </div>
+  </header>
+  <main style="padding: 48px 0 80px 0;">
+    <div class="container">
+      <div style="margin-bottom: 16px;"><a href="../index.html">← Back to All Formulas</a></div>
+      <div class="section-header"><h1>Algebra Formulas</h1></div>
+      <div class="search-wrapper" style="margin: 20px 0 32px 0;">
+        <div class="search-container">
+          <span class="search-icon-left">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search Algebra formulas...">
+          <button class="clear-search-btn" id="clear-search-btn">✕</button>
+        </div>
+      </div>
+      <div class="formulas-grid" id="category-grid"></div>
+    </div>
+  </main>
+  <script src="../js/formulas.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="../js/formula-details.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let q = '';
+      function update() { renderFormulaGrid('category-grid', filterFormulas(formulasData, q, 'logarithms'), '../'); }
+      setupSearch(val => { q = val; update(); });
+      update();
+    });
+  </script>
+</body>
+</html>

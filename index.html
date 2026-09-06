@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Formula Library — Premium Mathematical Reference</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">∑</span>
+        <span>Formula Library</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="#categories-section" class="nav-link">Categories</a>
+        <a href="pages/about.html" class="nav-link">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+        <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav-overlay" id="mobile-overlay"></div>
+  <aside class="mobile-nav-drawer" id="mobile-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-weight:700;">Menu</span>
+      <button class="icon-btn" id="mobile-drawer-close">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="pages/algebra.html">Algebra</a>
+      <a href="pages/trigonometry.html">Trigonometry</a>
+      <a href="pages/geometry.html">Geometry</a>
+      <a href="pages/calculus.html">Calculus</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-subtitle-badge">● Reference Suite</div>
+        <h1 class="hero-title">Mathematics, beautifully organized.</h1>
+        <p class="hero-description">An editorial digital encyclopedia of essential mathematical identities and theorems.</p>
+
+        <div class="search-wrapper">
+          <div class="search-container">
+            <span class="search-icon-left">🔍</span>
+            <input type="text" id="search-input" class="search-input" placeholder="Search formulas, topics or symbols (e.g. quadratic, bayes, integral)...">
+            <button class="clear-search-btn" id="clear-search-btn">✕</button>
+            <span class="search-kbd">⌘K</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 24px 0 64px 0;">
+      <div class="container">
+        <div class="category-scroller" id="category-pills-bar"></div>
+        <div class="formulas-grid" id="formulas-grid"></div>
+      </div>
+    </section>
+
+    <section id="categories-section" style="padding: 48px 0 80px 0; background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Subject Modules</h2>
+        </div>
+        <div class="categories-overview-grid">
+          <a href="pages/algebra.html" class="category-card"><h3>Algebra →</h3><p>Factorization, roots, binomial theorems.</p></a>
+          <a href="pages/trigonometry.html" class="category-card"><h3>Trigonometry →</h3><p>Pythagorean identities, sine and cosine laws.</p></a>
+          <a href="pages/geometry.html" class="category-card"><h3>Geometry →</h3><p>Areas, circumferences, polygons.</p></a>
+          <a href="pages/calculus.html" class="category-card"><h3>Calculus →</h3><p>Limits, FTC, Taylor series.</p></a>
+          <a href="pages/differentiation.html" class="category-card"><h3>Differentiation →</h3><p>Product, quotient, and chain rules.</p></a>
+          <a href="pages/integration.html" class="category-card"><h3>Integration →</h3><p>By parts, substitution, and standard forms.</p></a>
+          <a href="pages/probability.html" class="category-card"><h3>Probability →</h3><p>Conditional probability and Bayes' Theorem.</p></a>
+          <a href="pages/statistics.html" class="category-card"><h3>Statistics →</h3><p>Mean, variance, and standard deviation.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top:none;">
+      <span>© 2025 Math Formula Library</span>
+      <span>Pure Vanilla HTML, CSS & JS</span>
+    </div>
+  </footer>
+
+  <script src="js/formulas.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/formula-details.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    let activeCat = 'all';
+    let query = '';
+    function update() {
+      renderFormulaGrid('formulas-grid', filterFormulas(formulasData, query, activeCat));
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCategoryPills('category-pills-bar', activeCat, c => { activeCat = c; update(); });
+      setupSearch(q => { query = q; update(); });
+      update();
+    });
+  </script>
+</body>
+</html>
